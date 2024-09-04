@@ -16,13 +16,13 @@ defineProps({
 <style scoped lang="scss">
 .switch {
   display: inline-block;
-  height: 34px;
+  height: 1.25rem;
   position: relative;
-  width: 60px;
+  width: 2rem;
   input {
     display: none;
     &:checked + .slider:before {
-      transform: translateX(26px);
+      transform: translateX(0.75rem);
     }
     &:checked + .slider {
       background-color: v-bind(bgChecked);
@@ -39,13 +39,13 @@ defineProps({
     transition: 0.4s;
     &:before {
       background-color: v-bind(toggleColor);
-      bottom: 4px;
+      bottom: 0.125rem;
       content: "";
-      height: 26px;
-      left: 4px;
+      height: 1rem;
+      left: 0.125rem;
       position: absolute;
       transition: 0.4s;
-      width: 26px;
+      width: 1rem;
     }
   }
   .slider.round {

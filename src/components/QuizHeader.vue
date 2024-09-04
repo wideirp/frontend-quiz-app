@@ -10,7 +10,7 @@ import CheckboxSlider from "./widgets/CheckboxSlider.vue";
       </picture>
       <CheckboxSlider bgUnchecked="#a729f5" bgChecked="#a729f5" />
       <picture>
-        <img src="/icon-moon-dark.svg" alt="moon" />
+        <img src="/icon-moon-dark.svg?image" alt="moon" />
       </picture>
     </div>
   </header>
@@ -28,5 +28,12 @@ header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  picture {
+    display: flex;
+    img {
+      width: 1rem;
+    }
+  }
 }
 </style>

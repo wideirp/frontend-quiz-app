@@ -22,15 +22,15 @@ const bgColors = reactive({
   <section class="subjects">
     <QuizButton :iconBgColor="bgColors.html">
       <template #icon><IconHtml /></template>
-      <template #text>Accessibility</template>
+      <template #text>HTML</template>
     </QuizButton>
     <QuizButton :iconBgColor="bgColors.css">
       <template #icon><IconCss /></template>
-      <template #text>Accessibility</template>
+      <template #text>CSS</template>
     </QuizButton>
     <QuizButton :iconBgColor="bgColors.js">
       <template #icon><IconJs /></template>
-      <template #text>Accessibility</template>
+      <template #text>Javascript</template>
     </QuizButton>
     <QuizButton :iconBgColor="bgColors.accessibility">
       <template #icon><IconAccessibility /></template>

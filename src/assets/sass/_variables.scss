@@ -1,13 +1,27 @@
 $clr-purple: #a729f5;
+$clr-pure-white: #fff;
+$clr-dark-navy: #313e51;
+$clr-grey-navy: #626c7f;
 $clr-light-grey: #f4f6fa;
+$clr-navy: #3b4d66;
+$clr-light-bluish: #abc1e1;
+$clr-green: #26d782;
+$clr-red: #ee5454;
 
-$fc-primary: #313e51;
-$fc-primary-light: #626c7f;
+$bg-light: $clr-light-grey;
+$bg-dark: $clr-dark-navy;
 
+$fc-primary-light: $clr-dark-navy;
+$fc-secondary-light: $clr-grey-navy;
+$fc-primary-dark: $clr-pure-white;
+$fc-secondary-dark: $clr-light-bluish;
+
+$clr-btn-primary-light: #fff;
+$clr-btn-primary-dark: $clr-navy;
+
+$fc-grey-navy: #626c7f;
 $fs-200: 0.8rem;
 $fs-800: 2.5rem;
 
 $fw-light: 300;
 $fw-medium: 500;
-
-$clr-btn-primary: #fff;

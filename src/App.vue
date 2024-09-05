@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from "vue-router";
 import QuizHeader from "./components/QuizHeader.vue";
+import { store } from "./assets/js/store";
 </script>
 
 <template>
@@ -8,14 +9,32 @@ import QuizHeader from "./components/QuizHeader.vue";
     <QuizHeader />
 
     <main>
-      <!-- Add router for home, quiz and result view -->
-      <!-- All three views will have the same main container layout -->
       <RouterView />
     </main>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@use "@/assets/sass/variables" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+body {
+  min-height: 100vmax;
+  font-family: "Rubik", sans-serif;
+  background: url("/pattern-background-mobile-light.svg");
+  background-color: $bg-light;
+  &.dark-theme {
+    background: url("/pattern-background-mobile-dark.svg");
+    background-color: $bg-dark;
+  }
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
 .wrapper {
   padding: 1rem;
 }

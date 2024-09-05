@@ -1,14 +1,20 @@
 <script setup>
+import { store } from "@/assets/js/store";
 defineProps({
   bgUnchecked: { type: String, default: "#ccc" },
   bgChecked: { type: String, default: "#ccc" },
   toggleColor: { type: String, default: "#fff" },
 });
+
+const onChange = (event) => {
+  const isChecked = event.target.checked;
+  store.setDarkTheme(isChecked);
+};
 </script>
 
 <template>
   <label class="switch" for="checkbox">
-    <input type="checkbox" name="checkbox" id="checkbox" />
+    <input type="checkbox" name="checkbox" id="checkbox" @change="onChange" />
     <div class="slider round"></div>
   </label>
 </template>

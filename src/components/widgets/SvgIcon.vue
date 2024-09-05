@@ -19,7 +19,7 @@ picture {
   padding: 0.375rem;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 500;
 }
 

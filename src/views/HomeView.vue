@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from "vue";
-import QuizButton from "@/components/QuizButton.vue";
+import { store } from "@/assets/js/store";
+import QuizButton from "@/components/QuizSelector.vue";
 import SvgIcon from "@/components/widgets/SvgIcon.vue";
 
 const bgColors = reactive({
@@ -12,7 +13,7 @@ const bgColors = reactive({
 </script>
 
 <template>
-  <section class="hero">
+  <section class="hero" :class="{ 'dark-theme': store.darkTheme }">
     <h1>Welcome to the <br /><span>Frontend Quiz!</span></h1>
     <p>Pick a subject to get started.</p>
   </section>
@@ -57,7 +58,7 @@ const bgColors = reactive({
 .hero {
   margin: 2rem 0;
   h1 {
-    color: $fc-primary;
+    color: $fc-primary-light;
     font-size: $fs-800;
     font-weight: $fw-light;
     margin: 0;
@@ -67,12 +68,19 @@ const bgColors = reactive({
       text-align: justify;
     }
   }
-
   p {
-    color: $fc-primary-light;
+    color: $fc-secondary-light;
     font-size: $fs-200;
     font-style: italic;
     margin: 0;
+  }
+  &.dark-theme {
+    h1 {
+      color: $fc-primary-dark;
+    }
+    p {
+      color: $fc-secondary-dark;
+    }
   }
 }
 

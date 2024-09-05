@@ -38,5 +38,9 @@ button {
   &:hover {
     border-color: $clr-purple;
   }
+
+  &:active {
+    transform: scale(0.99);
+  }
 }
 </style>

@@ -39,13 +39,13 @@ defineProps({
     transition: 0.4s;
     &:before {
       background-color: v-bind(toggleColor);
-      bottom: 0.125rem;
+      bottom: 0.25rem;
+      left: 0.25rem;
       content: "";
-      height: 1rem;
-      left: 0.125rem;
+      width: 0.75rem;
+      height: 0.75rem;
       position: absolute;
       transition: 0.4s;
-      width: 1rem;
     }
   }
   .slider.round {

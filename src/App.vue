@@ -22,10 +22,10 @@ import { store } from "./assets/js/store";
 body {
   min-height: 100vmax;
   font-family: "Rubik", sans-serif;
-  background: url("/pattern-background-mobile-light.svg");
+  background: no-repeat url("/pattern-background-mobile-light.svg");
   background-color: $bg-light;
   &.dark-theme {
-    background: url("/pattern-background-mobile-dark.svg");
+    background-image: url("/pattern-background-mobile-dark.svg");
     background-color: $bg-dark;
   }
 }

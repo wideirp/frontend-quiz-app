@@ -1,12 +1,12 @@
 <script setup>
-import { store } from "@/assets/js/store";
+import { themeStore } from "@/assets/js/store";
 defineProps({
   iconBgColor: String,
 });
 </script>
 
 <template>
-  <button :class="{ 'dark-theme': store.darkTheme }">
+  <button :class="{ 'dark-theme': themeStore.darkTheme }">
     <slot name="icon"></slot>
     <span class="btn-text">
       <slot name="text"></slot>

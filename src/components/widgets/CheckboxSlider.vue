@@ -1,5 +1,5 @@
 <script setup>
-import { store } from "@/assets/js/store";
+import { themeStore } from "@/assets/js/store";
 defineProps({
   bgUnchecked: { type: String, default: "#ccc" },
   bgChecked: { type: String, default: "#ccc" },
@@ -8,7 +8,7 @@ defineProps({
 
 const onChange = (event) => {
   const isChecked = event.target.checked;
-  store.setDarkTheme(isChecked);
+  themeStore.setDarkTheme(isChecked);
 };
 </script>
 

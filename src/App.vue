@@ -1,7 +1,7 @@
 <script setup>
 import { RouterView } from "vue-router";
 import QuizHeader from "./components/QuizHeader.vue";
-import { store } from "./assets/js/store";
+import { themeStore } from "./assets/js/store";
 </script>
 
 <template>

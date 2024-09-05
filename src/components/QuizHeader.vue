@@ -1,15 +1,15 @@
 <script setup>
-import { store } from "@/assets/js/store";
+import { themeStore } from "@/assets/js/store";
 import CheckboxSlider from "./widgets/CheckboxSlider.vue";
 import SvgIcon from "./widgets/SvgIcon.vue";
 
-if (store.darkTheme) {
-  console.log(store.darkTheme);
+if (themeStore.darkTheme) {
+  console.log(themeStore.darkTheme);
 }
 </script>
 
 <template>
-  <header :class="{ 'dark-theme': store.darkTheme }">
+  <header :class="{ 'dark-theme': themeStore.darkTheme }">
     <div class="current-quiz">
       <SvgIcon src="/icon-js.svg?image" alt="html" bgColor="#EBF0FF" />
       <p>Javascript</p>
@@ -18,7 +18,7 @@ if (store.darkTheme) {
       <picture>
         <img
           :src="
-            store.darkTheme
+            themeStore.darkTheme
               ? '/icon-sun-light.svg?image'
               : '/icon-sun-dark.svg?image'
           "
@@ -29,7 +29,7 @@ if (store.darkTheme) {
       <picture>
         <img
           :src="
-            store.darkTheme
+            themeStore.darkTheme
               ? '/icon-moon-light.svg?image'
               : '/icon-moon-dark.svg?image'
           "

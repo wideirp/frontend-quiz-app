@@ -1,6 +1,7 @@
 import { reactive } from "vue";
 
-export const store = reactive({
+export const themeStore = reactive({
+  // THEMES
   darkTheme: false,
   setDarkTheme: function (bool) {
     this.darkTheme = bool;
@@ -11,4 +12,8 @@ export const store = reactive({
     }
     console.log("Theme set to : " + (this.darkTheme ? "Dark" : "Light"));
   },
+});
+
+export const quizStore = reactive({
+  state: "init", // init, play, score
 });

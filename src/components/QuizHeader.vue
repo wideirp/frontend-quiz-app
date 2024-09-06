@@ -1,5 +1,5 @@
 <script setup>
-import { themeStore } from "@/assets/js/store";
+import { themeStore, quizStore } from "@/assets/js/store";
 import CheckboxSlider from "./widgets/CheckboxSlider.vue";
 import SvgIcon from "./widgets/SvgIcon.vue";
 
@@ -11,8 +11,13 @@ if (themeStore.darkTheme) {
 <template>
   <header :class="{ 'dark-theme': themeStore.darkTheme }">
     <div class="current-quiz">
-      <!-- <SvgIcon src="/icon-js.svg?image" alt="html" bgColor="#EBF0FF" />
-      <p>Javascript</p> -->
+      <SvgIcon
+        :src="quizStore.selectedQuiz.icon + '?image'"
+        :alt="quizStore.selectedQuiz.title"
+        :bgColor="quizStore.selectedQuiz.bgColor"
+        v-if="quizStore.selectedQuiz"
+      />
+      <p v-if="quizStore.selectedQuiz">{{ quizStore.selectedQuiz.title }}</p>
     </div>
     <div class="theme">
       <picture>

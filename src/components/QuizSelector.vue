@@ -6,6 +6,7 @@ const onClick = function (event) {
   const selectedTitle = event.currentTarget.innerText;
   const quizData = quizStore.getData().then((quizzes) => {
     const quiz = quizzes.filter((quiz) => quiz.title === selectedTitle)[0];
+    quizStore.selectedQuiz = quiz;
     console.log(quiz.title + " quiz is selected");
   });
 };

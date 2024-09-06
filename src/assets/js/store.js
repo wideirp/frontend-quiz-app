@@ -16,9 +16,7 @@ export const themeStore = reactive({
 
 export const quizStore = reactive({
   state: "init", // init, play, score
-  quizTitle: null,
-  quizIcon: null,
-  quizQuestions: null,
+  selectedQuiz: null,
   getData: async function () {
     const response = await fetch("/src/assets/data/data.json");
     const jsonData = await response.json();

@@ -1,14 +1,12 @@
 <script setup>
-import { reactive } from "vue";
-import { themeStore } from "@/assets/js/store";
+import { ref } from "vue";
+import { quizStore, themeStore } from "@/assets/js/store";
 import QuizButton from "@/components/QuizSelector.vue";
 import SvgIcon from "@/components/widgets/SvgIcon.vue";
 
-const bgColors = reactive({
-  html: "#FFF1E9",
-  css: "#E0FDEF",
-  js: "#EBF0FF",
-  accessibility: "#F6E7FF",
+const quizzes = ref(null);
+quizStore.getData().then((data) => {
+  quizzes.value = data;
 });
 </script>
 
@@ -18,36 +16,15 @@ const bgColors = reactive({
     <p>Pick a subject to get started.</p>
   </section>
   <section class="subjects">
-    <QuizButton :iconBgColor="bgColors.html">
+    <QuizButton v-for="quiz in quizzes" :hoverColor="quiz.color">
       <template #icon>
         <SvgIcon
-          src="/icon-html.svg?image"
-          alt="html"
-          :bgColor="bgColors.html"
+          :alt="quiz.title"
+          :src="quiz.icon + '?image'"
+          :bgColor="quiz.bgColor"
         />
       </template>
-      <template #text>HTML</template>
-    </QuizButton>
-    <QuizButton :iconBgColor="bgColors.css">
-      <template #icon>
-        <SvgIcon src="/icon-css.svg?image" alt="html" :bgColor="bgColors.css"
-      /></template>
-      <template #text>CSS</template>
-    </QuizButton>
-    <QuizButton :iconBgColor="bgColors.js">
-      <template #icon>
-        <SvgIcon src="/icon-js.svg?image" alt="html" :bgColor="bgColors.js"
-      /></template>
-      <template #text>Javascript</template>
-    </QuizButton>
-    <QuizButton :iconBgColor="bgColors.accessibility">
-      <template #icon>
-        <SvgIcon
-          src="/icon-accessibility.svg?image"
-          alt="html"
-          :bgColor="bgColors.accessibility"
-      /></template>
-      <template #text>Accessibility</template>
+      <template #text>{{ quiz.title }}</template>
     </QuizButton>
   </section>
 </template>

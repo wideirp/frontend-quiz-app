@@ -11,8 +11,8 @@ if (themeStore.darkTheme) {
 <template>
   <header :class="{ 'dark-theme': themeStore.darkTheme }">
     <div class="current-quiz">
-      <SvgIcon src="/icon-js.svg?image" alt="html" bgColor="#EBF0FF" />
-      <p>Javascript</p>
+      <!-- <SvgIcon src="/icon-js.svg?image" alt="html" bgColor="#EBF0FF" />
+      <p>Javascript</p> -->
     </div>
     <div class="theme">
       <picture>
@@ -47,6 +47,7 @@ header {
   display: flex;
   justify-content: space-between;
   color: $fc-primary-light;
+  min-height: 2.5rem;
   &.dark-theme {
     color: $fc-primary-dark;
   }
@@ -58,6 +59,9 @@ header {
   gap: 1rem;
   font-size: 1.1rem;
   font-weight: 500;
+  p {
+    margin: 0;
+  }
 }
 
 .theme {

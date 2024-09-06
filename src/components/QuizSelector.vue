@@ -1,12 +1,18 @@
 <script setup>
-import { themeStore } from "@/assets/js/store";
-defineProps({
-  iconBgColor: String,
-});
+import { themeStore, quizStore } from "@/assets/js/store";
+defineProps({ hoverColor: { type: String, default: "#ccc" } });
+
+const onClick = function (event) {
+  const selectedTitle = event.currentTarget.innerText;
+  const quizData = quizStore.getData().then((quizzes) => {
+    const quiz = quizzes.filter((quiz) => quiz.title === selectedTitle)[0];
+    console.log(quiz.title + " quiz is selected");
+  });
+};
 </script>
 
 <template>
-  <button :class="{ 'dark-theme': themeStore.darkTheme }">
+  <button :class="{ 'dark-theme': themeStore.darkTheme }" @click="onClick">
     <slot name="icon"></slot>
     <span class="btn-text">
       <slot name="text"></slot>
@@ -18,6 +24,7 @@ defineProps({
 @use "@/assets/sass/variables" as *;
 
 button {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: center;
@@ -36,11 +43,12 @@ button {
   }
 
   &:hover {
-    border-color: $clr-purple;
+    border-color: v-bind(hoverColor);
   }
 
   &:active {
     transform: scale(0.99);
+    box-shadow: 1px 1px 2px v-bind(hoverColor);
   }
 }
 </style>

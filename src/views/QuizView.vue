@@ -1,4 +1,5 @@
 <script setup>
+import QuizAnswer from "@/components/QuizAnswer.vue";
 import { useRouter } from "vue-router";
 import { quizStore, themeStore } from "@/assets/js/store";
 import { ref } from "vue";
@@ -20,6 +21,15 @@ if (!quizStore.selectedQuiz) {
     <p class="question">
       {{ quizStore.selectedQuiz.questions[currentQuestion].question }}
     </p>
+  </section>
+  <section class="options">
+    <QuizAnswer
+      v-for="(option, index) in quizStore.selectedQuiz.questions[
+        currentQuestion
+      ].options"
+      :optionIndex="index"
+      :option
+    />
   </section>
 </template>
 
@@ -49,5 +59,11 @@ if (!quizStore.selectedQuiz) {
       color: $fc-primary-dark;
     }
   }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 </style>

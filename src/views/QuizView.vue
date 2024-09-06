@@ -10,6 +10,22 @@ const currentQuestion = ref(1);
 if (!quizStore.selectedQuiz) {
   router.push("/");
 }
+
+function onClickAnswer(option, event) {
+  event.preventDefault();
+  // console.log(event.currentTarget);
+  const t = event.currentTarget;
+  t.parentNode.childNodes.forEach((btn) => {
+    btn.disabled = true;
+  });
+  if (
+    option === quizStore.selectedQuiz.questions[currentQuestion.value].answer
+  ) {
+    t.classList.add("correct");
+  } else {
+    t.classList.add("incorrect");
+  }
+}
 </script>
 
 <template>
@@ -29,6 +45,7 @@ if (!quizStore.selectedQuiz) {
       ].options"
       :optionIndex="index"
       :option
+      @click-answer="onClickAnswer"
     />
   </section>
 </template>

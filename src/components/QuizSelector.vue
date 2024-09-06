@@ -48,6 +48,7 @@ button {
 
   &:active {
     transform: scale(0.99);
+    border-color: v-bind(hoverColor);
     box-shadow: 1px 1px 2px v-bind(hoverColor);
   }
 }

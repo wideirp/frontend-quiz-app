@@ -11,7 +11,7 @@ if (QuizStore.questionIndex < 10) {
 
 function onResetGame() {
   QuizStore.reset();
-  router.push("/");
+  router.push("/frontend-quiz-app/");
 }
 </script>
 

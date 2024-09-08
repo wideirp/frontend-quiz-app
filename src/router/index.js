@@ -7,17 +7,17 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
+      path: "/frontend-quiz-app",
       name: "home",
       component: HomeView,
     },
     {
-      path: "/quiz",
+      path: "/frontend-quiz-app/quiz",
       name: "quiz",
       component: QuizView,
     },
     {
-      path: "/score",
+      path: "/frontend-quiz-app/score",
       name: "score",
       component: ScoreView,
     },

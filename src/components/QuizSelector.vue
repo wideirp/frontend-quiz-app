@@ -9,7 +9,7 @@ const onClick = function (event) {
   const selectedTitle = event.currentTarget.innerText;
   homeStore.selectQuiz(selectedTitle).then(() => {
     if (QuizStore.title) {
-      router.push("/quiz");
+      router.push("/frontend-quiz-app/quiz");
     }
   });
 };

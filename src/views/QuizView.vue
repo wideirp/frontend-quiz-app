@@ -8,7 +8,7 @@ const router = useRouter();
 const currentQuestion = ref(1);
 
 if (!QuizStore.title) {
-  router.push("/");
+  router.push("/frontend-quiz-app/");
 }
 
 function onAnswer(e) {
@@ -25,7 +25,7 @@ function onAnswer(e) {
 
 function onNext(e) {
   if (QuizStore.questionIndex >= 10) {
-    router.push("/score");
+    router.push("/frontend-quiz-app/score");
   } else {
     QuizStore.nextQuestion();
   }

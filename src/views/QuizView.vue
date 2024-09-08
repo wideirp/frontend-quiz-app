@@ -14,6 +14,9 @@ if (!QuizStore.title) {
 function onAnswer(e) {
   if (QuizStore.selectedOption) {
     QuizStore.questionAnswered = true;
+    if (QuizStore.selectedOption === QuizStore.getAnswer()) {
+      QuizStore.correct++;
+    }
   } else {
     console.log("no option selected");
     QuizStore.emptyError = true;

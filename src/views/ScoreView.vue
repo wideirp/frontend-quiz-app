@@ -6,6 +6,10 @@ import SvgIcon from "@/components/widgets/SvgIcon.vue";
 const router = useRouter();
 
 if (QuizStore.questionIndex < 10) {
+  onResetGame();
+}
+
+function onResetGame() {
   QuizStore.reset();
   router.push("/");
 }
@@ -16,7 +20,11 @@ if (QuizStore.questionIndex < 10) {
     <h1>Quiz completed <br /><span>You scored...</span></h1>
   </section>
 
-  <section class="score">
+  <section
+    class="score"
+    v-if="QuizStore.title"
+    :class="{ 'dark-theme': themeStore.darkTheme }"
+  >
     <div class="scoreboard">
       <div class="current-quiz">
         <SvgIcon
@@ -32,7 +40,7 @@ if (QuizStore.questionIndex < 10) {
         out of {{ QuizStore.questions.length }}
       </p>
     </div>
-    <button class="reset-btn">Play Again</button>
+    <button class="reset-btn" @click.prevent="onResetGame">Play Again</button>
   </section>
 </template>
 
@@ -92,21 +100,29 @@ if (QuizStore.questionIndex < 10) {
       font-size: 1.1rem;
     }
   }
-}
-
-.reset-btn {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background-color: $clr-purple;
-  color: $clr-pure-white;
-  font-weight: $fw-medium;
-  &:active {
-    transform: scale(0.98);
-    background-color: adjust-color($clr-purple, $lightness: -10%);
+  .reset-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: $clr-purple;
+    color: $clr-pure-white;
+    font-weight: $fw-medium;
+    &:active {
+      transform: scale(0.98);
+      background-color: adjust-color($clr-purple, $lightness: -10%);
+    }
+  }
+  &.dark-theme {
+    .scoreboard {
+      background-color: $clr-btn-primary-dark;
+      color: $fc-primary-dark;
+      .score__num-questions {
+        color: $fc-secondary-dark;
+      }
+    }
   }
 }
 </style>

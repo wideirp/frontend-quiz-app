@@ -19,13 +19,29 @@ import QuizHeader from "./components/QuizHeader.vue";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 body {
-  min-height: 100vmax;
+  min-height: 100vh;
   font-family: "Rubik", sans-serif;
   background: no-repeat url("/pattern-background-mobile-light.svg");
   background-color: $bg-light;
   &.dark-theme {
     background-image: url("/pattern-background-mobile-dark.svg");
     background-color: $bg-dark;
+  }
+  @media screen and (min-width: 428px) {
+    background: no-repeat url("/pattern-background-tablet-light.svg");
+    background-color: $bg-light;
+
+    &.dark-theme {
+      background-image: url("/pattern-background-tablet-dark.svg");
+    }
+  }
+  @media screen and (min-width: 768px) {
+    background: url("/pattern-background-desktop-light.svg");
+    background-color: $bg-light;
+
+    &.dark-theme {
+      background-image: url("/pattern-background-desktop-dark.svg");
+    }
   }
 }
 

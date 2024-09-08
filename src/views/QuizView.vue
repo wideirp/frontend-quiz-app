@@ -1,52 +1,66 @@
 <script setup>
 import QuizAnswer from "@/components/QuizAnswer.vue";
 import { useRouter } from "vue-router";
-import { quizStore, themeStore } from "@/assets/js/store";
+import { homeStore, QuizStore, themeStore } from "@/assets/js/store";
 import { ref } from "vue";
 const router = useRouter();
 
 const currentQuestion = ref(1);
 
-if (!quizStore.selectedQuiz) {
+if (!QuizStore.title) {
   router.push("/");
 }
 
-function onClickAnswer(option, event) {
-  event.preventDefault();
-  // console.log(event.currentTarget);
-  const t = event.currentTarget;
-  t.parentNode.childNodes.forEach((btn) => {
-    btn.disabled = true;
-  });
-  if (
-    option === quizStore.selectedQuiz.questions[currentQuestion.value].answer
-  ) {
-    t.classList.add("correct");
+function onAnswer(e) {
+  if (QuizStore.selectedOption) {
+    QuizStore.questionAnswered = true;
   } else {
-    t.classList.add("incorrect");
+    console.log("no option selected");
   }
+}
+
+function onNext(e) {
+  QuizStore.nextQuestion();
 }
 </script>
 
 <template>
-  <section class="hero" :class="{ 'dark-theme': themeStore.darkTheme }">
+  <section
+    class="hero"
+    :class="{ 'dark-theme': themeStore.darkTheme }"
+    v-if="QuizStore.title"
+  >
     <p class="question-counter">
-      Question {{ currentQuestion }} of
-      {{ quizStore.selectedQuiz.questions.length }}
+      Question {{ QuizStore.questionIndex }} of
+      {{ QuizStore.questions.length }}
     </p>
     <p class="question">
-      {{ quizStore.selectedQuiz.questions[currentQuestion].question }}
+      {{ QuizStore.getQuestion() }}
     </p>
   </section>
-  <section class="options">
-    <QuizAnswer
-      v-for="(option, index) in quizStore.selectedQuiz.questions[
-        currentQuestion
-      ].options"
-      :optionIndex="index"
-      :option
-      @click-answer="onClickAnswer"
-    />
+  <section class="select" v-if="QuizStore.title">
+    <div class="options">
+      <QuizAnswer
+        v-for="(option, index) in QuizStore.getOptions()"
+        :optionIndex="index"
+        :option
+        @click.prevent="() => QuizStore.setOption(option)"
+      />
+    </div>
+    <button
+      class="select-btn"
+      @click.prevent="onAnswer"
+      v-show="!QuizStore.questionAnswered"
+    >
+      Submit Answer
+    </button>
+    <button
+      class="select-btn"
+      @click.prevent="onNext"
+      v-show="QuizStore.questionAnswered"
+    >
+      Next Question
+    </button>
   </section>
 </template>
 
@@ -78,9 +92,26 @@ function onClickAnswer(option, event) {
   }
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.select {
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .select-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: $clr-purple;
+    color: $clr-pure-white;
+    font-weight: $fw-medium;
+    &:active {
+      transform: scale(0.98);
+      background-color: adjust-color($clr-purple, $lightness: -10%);
+    }
+  }
 }
 </style>

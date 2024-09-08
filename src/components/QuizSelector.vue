@@ -1,17 +1,16 @@
 <script setup>
 import { useRouter } from "vue-router";
-import { themeStore, quizStore } from "@/assets/js/store";
+import { themeStore, homeStore, QuizStore } from "@/assets/js/store";
 defineProps({ hoverColor: { type: String, default: "#ccc" } });
 
 const router = useRouter();
 
 const onClick = function (event) {
   const selectedTitle = event.currentTarget.innerText;
-  const quizData = quizStore.getData().then((quizzes) => {
-    const quiz = quizzes.filter((quiz) => quiz.title === selectedTitle)[0];
-    quizStore.selectedQuiz = quiz;
-    console.log(quiz.title + " quiz is selected");
-    router.push("quiz");
+  homeStore.selectQuiz(selectedTitle).then(() => {
+    if (QuizStore.title) {
+      router.push("/quiz");
+    }
   });
 };
 </script>

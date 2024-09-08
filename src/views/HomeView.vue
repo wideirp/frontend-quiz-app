@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
-import { quizStore, themeStore } from "@/assets/js/store";
+import { homeStore, themeStore } from "@/assets/js/store";
 import QuizButton from "@/components/QuizSelector.vue";
 import SvgIcon from "@/components/widgets/SvgIcon.vue";
 
 const quizzes = ref(null);
-quizStore.getData().then((data) => {
+homeStore.getData().then((data) => {
   quizzes.value = data;
 });
 </script>

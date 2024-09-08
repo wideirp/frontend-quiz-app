@@ -53,13 +53,13 @@ export const QuizStore = reactive({
     this.setOption(null);
   },
   getQuestion: function () {
-    return this.questions[this.questionIndex].question;
+    return this.questions[this.questionIndex - 1].question;
   },
   getOptions: function () {
-    return this.questions[this.questionIndex].options;
+    return this.questions[this.questionIndex - 1].options;
   },
   getAnswer: function () {
-    return this.questions[this.questionIndex].answer;
+    return this.questions[this.questionIndex - 1].answer;
   },
   setQuiz: function (quiz) {
     this.title = quiz.title;
@@ -71,5 +71,18 @@ export const QuizStore = reactive({
   setOption: function (option) {
     this.selectedOption = option;
     this.emptyError = false;
+  },
+  reset: function () {
+    this.title = null;
+    this.icon = null;
+    this.color = null;
+    this.bgColor = null;
+    this.questions = null;
+    this.questionIndex = 1;
+    this.selectedOption = null;
+    this.questionAnswered = false;
+    this.emptyError = false;
+    this.correct = 0;
+    console.log("reset quiz");
   },
 });

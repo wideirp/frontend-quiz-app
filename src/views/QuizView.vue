@@ -21,7 +21,11 @@ function onAnswer(e) {
 }
 
 function onNext(e) {
-  QuizStore.nextQuestion();
+  if (QuizStore.questionIndex >= 10) {
+    router.push("/score");
+  } else {
+    QuizStore.nextQuestion();
+  }
 }
 </script>
 
@@ -60,7 +64,7 @@ function onNext(e) {
       @click.prevent="onNext"
       v-show="QuizStore.questionAnswered"
     >
-      Next Question
+      {{ QuizStore.questionIndex >= 10 ? "See Results" : "Next Question" }}
     </button>
     <div class="no-answer" v-if="QuizStore.emptyError">
       <img src="/icon-incorrect.svg?image" alt="" />

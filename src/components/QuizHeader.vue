@@ -49,6 +49,7 @@ if (themeStore.darkTheme) {
 @use "@/assets/sass/variables" as *;
 
 header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   color: $fc-primary-light;

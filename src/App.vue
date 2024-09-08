@@ -34,7 +34,42 @@ svg {
   height: 100%;
 }
 
+#app {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
 .wrapper {
   padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  position: relative;
+  & > :first-child {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+  }
+  @media screen and (min-width: 468px) {
+    margin: 0 2rem;
+    width: 80%;
+    max-width: 62rem;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    // margin-top: 3rem;
+    & > * {
+      width: 100%;
+    }
+  }
 }
 </style>

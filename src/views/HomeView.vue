@@ -33,7 +33,7 @@ homeStore.getData().then((data) => {
 @use "@/assets/sass/variables" as *;
 
 .hero {
-  margin: 2rem 0;
+  margin: 0rem 0;
   h1 {
     color: $fc-primary-light;
     font-size: $fs-800;

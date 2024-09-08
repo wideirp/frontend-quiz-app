@@ -45,6 +45,7 @@ export const QuizStore = reactive({
   questionIndex: 1,
   selectedOption: null,
   questionAnswered: false,
+  emptyError: false,
   correct: 0,
   nextQuestion: function () {
     this.questionIndex++;
@@ -69,5 +70,6 @@ export const QuizStore = reactive({
   },
   setOption: function (option) {
     this.selectedOption = option;
+    this.emptyError = false;
   },
 });

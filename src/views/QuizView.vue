@@ -16,6 +16,7 @@ function onAnswer(e) {
     QuizStore.questionAnswered = true;
   } else {
     console.log("no option selected");
+    QuizStore.emptyError = true;
   }
 }
 
@@ -61,6 +62,10 @@ function onNext(e) {
     >
       Next Question
     </button>
+    <div class="no-answer" v-if="QuizStore.emptyError">
+      <img src="/icon-incorrect.svg?image" alt="" />
+      <p>Please select and answer</p>
+    </div>
   </section>
 </template>
 
@@ -111,6 +116,19 @@ function onNext(e) {
     &:active {
       transform: scale(0.98);
       background-color: adjust-color($clr-purple, $lightness: -10%);
+    }
+  }
+
+  .no-answer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    img {
+      width: 2rem;
+    }
+    p {
+      color: $clr-red;
     }
   }
 }
